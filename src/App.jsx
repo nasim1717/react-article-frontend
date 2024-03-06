@@ -5,7 +5,7 @@ import Login from "./components/Pages/Login/Login";
 import Main from "./components/Pages/Main/Main";
 import Profile from "./components/Pages/Profile/Profile";
 import Registration from "./components/Pages/Registration/Registration";
-import SingleBlog from "./components/Pages/SingleBlog/SingleBlog";
+import SingleBlogContent from "./components/Pages/SingleBlog/SingleBlogContent";
 
 function App() {
   return (
@@ -16,10 +16,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/create-blog" element={<CreateBlog />} />
-            <Route path="single-blog" element={<SingleBlog />} />
+            <Route path="single-blog" element={<SingleBlogContent />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Registration />} />
           </Route>
-          <Route path="/login" element={<Login />} />
-          <Route path="/registar" element={<Registration />} />
         </Route>
       </Routes>
     </>
