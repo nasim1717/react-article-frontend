@@ -18,7 +18,6 @@ export default function LoginForm() {
   const submitForm = async (data) => {
     setLoading(true);
     try {
-      console.log(data);
       const response = await axios.post(`${import.meta.env.VITE_SERVER_BASE_URL}/auth/login`, data);
       if (response.status === 200) {
         localStorage.removeItem("auth");

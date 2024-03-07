@@ -1,13 +1,12 @@
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { actions } from "../../../actions";
+import { useBlogs } from "../../../hooks/useBlogs";
 import BlogCard from "./BlogCard";
 
 export default function BlogContents() {
-  const [hasMore, setHasMore] = useState(true);
-  const [blogs, setBlogs] = useState([]);
-  const [page, setPage] = useState(1);
+  const { blogs, page, error, allVisibale, blogsFound, dispatch } = useBlogs();
   const loaderRef = useRef(null);
-  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -16,25 +15,26 @@ export default function BlogContents() {
           `${import.meta.env.VITE_SERVER_BASE_URL}/blogs?page=${page}`
         );
         if (response?.data?.blogs?.length === 0) {
-          setHasMore(false);
+          dispatch({ type: actions.blogs.BLOGS_ALL_VISIBALE, payload: { data: [] } });
         } else {
-          setBlogs([...blogs, ...response.data.blogs]);
-          setPage((prev) => prev + 1);
+          dispatch({
+            type: actions.blogs.BLOGS_DATA_FETCHED,
+            payload: { data: response.data.blogs },
+          });
         }
       } catch (error) {
-        setError(true);
+        dispatch({ type: actions.blogs.BLOGS_DATA_ERROR, payload: { error: true } });
       }
     };
 
     const onIntersection = (items) => {
       const loaderItem = items[0];
-      if (loaderItem.isIntersecting && hasMore) {
+      if (loaderItem.isIntersecting && !allVisibale) {
         fetchProducts();
       }
     };
 
     const observer = new IntersectionObserver(onIntersection);
-
     if (observer && loaderRef.current) {
       observer.observe(loaderRef.current);
     }
@@ -43,25 +43,30 @@ export default function BlogContents() {
     return () => {
       if (observer) observer.disconnect();
     };
-  }, [page, hasMore]);
+  }, [page]);
 
-  let content = null;
+  const content = blogs.map((blog) => <BlogCard key={blog?.id} blog={blog} />);
 
-  if (blogs.length > 0 && !error) {
-    content = blogs.map((blog) => <BlogCard key={blog?.id} blog={blog} />);
-  }
-  if (blogs.length === 0 && !error) {
-    content = <div>Blogs Not Found</div>;
-  }
-
+  let loadingShow = null;
   if (error) {
-    content = <div>Was an error!</div>;
+    loadingShow = "Was an error";
+  } else if (!error && blogs.length === 0 && blogsFound && !allVisibale) {
+    loadingShow = "Loading....";
+  } else if (!error && blogs.length > 0 && blogsFound && !allVisibale) {
+    loadingShow = "Loading More Blogs...";
+  } else if (!error && blogs.length === 0 && !blogsFound && !allVisibale) {
+    loadingShow = "Blogs Not Found!";
+  } else if (!error && blogs.length > 0 && blogsFound && allVisibale) {
+    loadingShow = "No more blogs all blogs visible";
   }
 
   return (
     <div className="space-y-3 md:col-span-5">
       {content}
-      {hasMore && <div ref={loaderRef}>Loading more Blogs...</div>}
+      <div ref={loaderRef} className={`${allVisibale && "hidden"}`}>
+        {loadingShow}
+      </div>
+      {allVisibale && <div>{loadingShow}</div>}
     </div>
   );
 }
