@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import CreateBlog from "./components/Pages/CreateBlog/CreateBlog";
 import Home from "./components/Pages/Home/Home";
 import Login from "./components/Pages/Login/Login";
@@ -20,7 +21,14 @@ function App() {
             <Route path="/" element={<Main />}>
               <Route path="/" element={<Home />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/create-blog" element={<CreateBlog />} />
+              <Route
+                path="/create-blog"
+                element={
+                  <PrivateRoute>
+                    <CreateBlog />
+                  </PrivateRoute>
+                }
+              />
               <Route path="/blog/:blogId" element={<SingleBlogMainContent />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Registration />} />

@@ -12,12 +12,14 @@ export default function BlogComments() {
   const { api } = useAxios();
   const [comment, setComment] = useState("");
   const [openDelBtn, setOpenDelBtn] = useState(null);
+  const [postComentLoading, setPostCommentLoading] = useState(false);
 
   // handle post comment
   const handleComment = async (id) => {
     if (auth?.user) {
       try {
         if (comment) {
+          setPostCommentLoading(true);
           const response = await api.post(`/blogs/${id}/comment`, { content: comment });
           if (response.status === 200) {
             const comment = response?.data?.comments;
@@ -34,6 +36,8 @@ export default function BlogComments() {
       } catch (error) {
         localStorage.removeItem("auth");
         setAuth({});
+      } finally {
+        setPostCommentLoading(false);
       }
     } else {
       toast.warning("Login first then comment", { autoClose: 2000 });
@@ -99,10 +103,11 @@ export default function BlogComments() {
             ></textarea>
             <div className="flex justify-end mt-4">
               <button
+                disabled={postComentLoading}
                 className="bg-indigo-600 text-white px-6 py-2 md:py-3 rounded-md hover:bg-indigo-700 transition-all duration-200"
                 onClick={() => handleComment(singleBlog?.id)}
               >
-                Comment
+                {postComentLoading ? "Loading..." : "Comment"}
               </button>
             </div>
           </div>
