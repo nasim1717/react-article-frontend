@@ -54,10 +54,10 @@ export default function Floating() {
       } catch (error) {
         localStorage.removeItem("auth");
         setAuth({});
-        toast.warning("Login first then like", { autoClose: 3000 });
+        toast.warning("Login first then like", { autoClose: 2000 });
       }
     } else {
-      toast.warning("Login first then like", { autoClose: 3000 });
+      toast.warning("Login first then like", { autoClose: 2000 });
     }
   };
 

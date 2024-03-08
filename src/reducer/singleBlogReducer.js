@@ -30,7 +30,6 @@ export const singleBlogReducer = (state, action) => {
             }
         }
         case actions.blogs.BLOG_LIKE: {
-            console.log("redu-->", action.payload.data)
             return {
                 ...state,
                 singleBlog: {
@@ -38,6 +37,15 @@ export const singleBlogReducer = (state, action) => {
                     likes: [...action.payload.data]
                 }
 
+            }
+        }
+        case actions.blogs.BLOG_COMMENT: {
+            return {
+                ...state,
+                singleBlog: {
+                    ...state.singleBlog,
+                    comments: [...action.payload.comment]
+                }
             }
         }
         default: {
