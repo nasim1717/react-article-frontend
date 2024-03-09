@@ -4,7 +4,7 @@ import { getFormateDate } from "../../../utils/getFormateDate";
 export default function BlogMetaInfo({ blog }) {
   return (
     <div className="flex justify-between items-center">
-      <Link to={`/profile`}>
+      <Link to={`/profile/${blog?.author?.id}`}>
         <div className="flex items-center capitalize space-x-2">
           <div className="avater-img bg-indigo-600 text-white ">
             {blog?.author?.avatar ? (
@@ -13,7 +13,7 @@ export default function BlogMetaInfo({ blog }) {
                 src={`${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${
                   blog?.author?.avatar
                 }`}
-                alt=""
+                alt="avatar"
               />
             ) : (
               <span className="capitalize">{blog?.author?.firstName.charAt(0)}</span>

@@ -43,13 +43,13 @@ export default function MostPopular() {
             {data?.title}
           </h3>
           <p className="text-slate-600 text-sm">
-            <Link to={`/profile`}>
+            <Link to={`/profile/${data?.author?.id}`}>
               {" "}
               <span>
                 {" "}
                 by
                 {/* to do */}
-                <Link to={"/profile"}>
+                <Link to={`/profile/${data?.author?.id}`}>
                   {" " + data?.author?.firstName + " " + data?.author?.lastName}
                 </Link>
                 <span>·</span>

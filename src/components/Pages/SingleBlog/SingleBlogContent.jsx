@@ -45,7 +45,7 @@ export default function SingleBlogContent() {
     );
   }
   if (error && !loading) {
-    content = <div className="text-slate-400 font-medium">An error has occurred</div>;
+    content = <div className="text-slate-400 font-medium">Blog not found</div>;
   }
 
   return <main>{content}</main>;

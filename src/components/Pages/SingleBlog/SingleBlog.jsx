@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useSingleBlog } from "../../../hooks/useSingleBlog";
 import { getFormateDate } from "../../../utils/getFormateDate";
 
@@ -9,26 +10,27 @@ export default function SingleBlog() {
       <div className="container text-center py-8">
         <h1 className="font-bold text-3xl md:text-5xl">{singleBlog?.title}</h1>
         <div className="flex justify-center items-center my-4 gap-4">
-          <div className="flex items-center capitalize space-x-2">
-            <div className="avater-img">
-              {singleBlog?.author?.avatar ? (
-                <img
-                  className="rounded-full"
-                  src={`${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${
-                    singleBlog?.author?.avatar
-                  }`}
-                  alt=""
-                />
-              ) : (
-                <span className="bg-indigo-600 text-white capitalize">
-                  {singleBlog?.author?.firstName.charAt(0)}
-                </span>
-              )}
+          <Link to={`/profile/${singleBlog?.author?.id}`}>
+            <div className="flex items-center capitalize space-x-2">
+              <div className="avater-img bg-indigo-600 text-white">
+                {singleBlog?.author?.avatar ? (
+                  <img
+                    className="rounded-full"
+                    src={`${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${
+                      singleBlog?.author?.avatar
+                    }`}
+                    alt="avatar"
+                  />
+                ) : (
+                  <span className=" capitalize">{singleBlog?.author?.firstName.charAt(0)}</span>
+                )}
+              </div>
+              <h5 className="text-slate-500 text-sm">
+                {singleBlog?.author.firstName + " " + singleBlog?.author?.lastName}
+              </h5>
             </div>
-            <h5 className="text-slate-500 text-sm">
-              {singleBlog?.author.firstName + " " + singleBlog?.author?.lastName}
-            </h5>
-          </div>
+          </Link>
+
           <span className="text-sm text-slate-700 dot">
             {getFormateDate(singleBlog?.createdAt)}
           </span>
