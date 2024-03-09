@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { actions } from "../../../actions";
 import { useBlogs } from "../../../hooks/useBlogs";
 import BlogCard from "./BlogCard";
@@ -7,7 +7,9 @@ import BlogCard from "./BlogCard";
 export default function BlogContents() {
   const { blogs, page, error, allVisibale, blogsFound, dispatch } = useBlogs();
   const loaderRef = useRef(null);
+  const [actionPopUp, setActionPopUp] = useState(null);
 
+  // blog data fetching infinity scroll
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -45,7 +47,14 @@ export default function BlogContents() {
     };
   }, [page]);
 
-  const content = blogs.map((blog) => <BlogCard key={blog?.id} blog={blog} />);
+  const content = blogs.map((blog) => (
+    <BlogCard
+      key={blog?.id}
+      blog={blog}
+      setActionPopUp={setActionPopUp}
+      actionPopUp={actionPopUp}
+    />
+  ));
 
   let loadingShow = null;
   if (error) {

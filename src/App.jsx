@@ -29,6 +29,14 @@ function App() {
                   </PrivateRoute>
                 }
               />
+              <Route
+                path="/edit/:blogId"
+                element={
+                  <PrivateRoute>
+                    <CreateBlog />
+                  </PrivateRoute>
+                }
+              />
               <Route path="/blog/:blogId" element={<SingleBlogMainContent />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Registration />} />

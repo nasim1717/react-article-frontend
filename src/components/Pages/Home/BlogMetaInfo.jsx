@@ -6,7 +6,7 @@ export default function BlogMetaInfo({ blog }) {
     <div className="flex justify-between items-center">
       <Link to={`/profile`}>
         <div className="flex items-center capitalize space-x-2">
-          <div className="avater-img">
+          <div className="avater-img bg-indigo-600 text-white ">
             {blog?.author?.avatar ? (
               <img
                 className="rounded-full"
@@ -16,9 +16,7 @@ export default function BlogMetaInfo({ blog }) {
                 alt=""
               />
             ) : (
-              <span className="bg-indigo-600 text-white capitalize">
-                {blog?.author?.firstName.charAt(0)}
-              </span>
+              <span className="capitalize">{blog?.author?.firstName.charAt(0)}</span>
             )}
           </div>
 

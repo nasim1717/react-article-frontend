@@ -46,7 +46,7 @@ export default function YourFavourites() {
             {data?.title}
           </h3>
           <p className="text-slate-600 text-sm">
-            {data?.tags.split(" ").map((value) => `#${value} `)}
+            {data?.tags.split(",").map((value) => `#${value} `)}
           </p>
         </Link>
       </li>
