@@ -57,7 +57,7 @@ export default function BlogComments() {
             alt="avatar"
           />
         ) : (
-          <span className="capitalize">{comment?.author?.firstName.charAt(0)}</span>
+          <span className="capitalize">{comment?.author?.firstName?.charAt(0)}</span>
         )}
       </div>
       <div className="w-full">

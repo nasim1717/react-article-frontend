@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { actions } from "../../../actions";
+import { useAuth } from "../../../hooks/useAuth";
 import { useAxios } from "../../../hooks/useAxios";
 import { useProfile } from "../../../hooks/useProfile";
 import ProfileInfo from "./ProfileInfo";
@@ -10,13 +11,13 @@ export default function Profile() {
   const { authorId } = useParams();
   const { api } = useAxios();
   const { state, dispatch } = useProfile();
+  const { setAuth } = useAuth();
 
   useEffect(() => {
     const fetchProfileData = async () => {
       dispatch({ type: actions.profile.PROFILE_DATA_FETCHING });
       try {
         const response = await api.get(`/profile/${authorId}`);
-        console.log(response);
         if (response.status === 200) {
           dispatch({
             type: actions.profile.PROFILE_DATA_FETCHED,
@@ -24,8 +25,9 @@ export default function Profile() {
           });
         }
       } catch (error) {
-        console.log(error);
         dispatch({ type: actions.profile.PROFILE_DATA_ERROR });
+        localStorage.removeItem("auth");
+        setAuth({});
       }
     };
     fetchProfileData();

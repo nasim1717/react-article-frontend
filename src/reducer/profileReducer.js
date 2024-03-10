@@ -1,4 +1,4 @@
-import { actions } from "../actions"
+import { actions } from "../actions";
 
 export const initialProfileState = {
     profileData: {},
@@ -7,6 +7,30 @@ export const initialProfileState = {
     loading: false,
     error: false,
     allBlogsVisible: false,
+    blogCopyIncrementCount: 0
+}
+
+
+const blogsArraySplice = (state) => {
+    let sliceArray = [];
+    if (state.blogCopyIncrementCount >= 0) {
+        sliceArray = state.profileData?.blogs?.slice(state.blogCopyIncrementCount, state.blogCopyIncrementCount + 2);
+    }
+    if (sliceArray.length === 0) {
+        return {
+            ...state,
+            infinityScrollBlogs: [...state.infinityScrollBlogs, ...sliceArray],
+            allBlogsVisible: true,
+            blogCopyIncrementCount: 0
+        }
+    }
+    else {
+        return {
+            ...state,
+            infinityScrollBlogs: [...state.infinityScrollBlogs, ...sliceArray],
+            blogCopyIncrementCount: state.blogCopyIncrementCount + 2
+        }
+    }
 }
 
 export const profileReducer = (state, action) => {
@@ -22,7 +46,6 @@ export const profileReducer = (state, action) => {
             return {
                 ...state,
                 loading: false,
-                blogs: [...action.payload.data.blogs],
                 profileData: action.payload.data
             }
         }
@@ -49,6 +72,15 @@ export const profileReducer = (state, action) => {
                     ...state.profileData,
                     avatar: action.payload.avatar
                 }
+            }
+        }
+        case actions.profile.PROFILE_INFINITY_SCROLL_DATA_LOAD: {
+            return blogsArraySplice(state);
+        }
+        case actions.profile.PROFILE_BLOG_DELETE: {
+            return {
+                ...state,
+                infinityScrollBlogs: state.infinityScrollBlogs.filter(blog => blog.id !== action.payload.id)
             }
         }
         default: {

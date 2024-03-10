@@ -1,108 +1,59 @@
-import BlogThumbnail from "../../../assets/blogs/Underrated Video.jpg";
+import { useEffect, useRef, useState } from "react";
+import { actions } from "../../../actions";
+import { useProfile } from "../../../hooks/useProfile";
+import ProfileBlogCard from "./ProfileBlogCard";
 
 export default function YourProfileBlogs() {
+  const { state, dispatch } = useProfile();
+  const [actionPopUp, setActionPopUp] = useState(null);
+  const loaderRef = useRef(null);
+
+  // infinity scroll data loading
+  useEffect(() => {
+    const blogDataLoad = () => {
+      dispatch({ type: actions.profile.PROFILE_INFINITY_SCROLL_DATA_LOAD });
+    };
+    const onIntersection = (items) => {
+      const loaderItem = items[0];
+      if (loaderItem.isIntersecting && !state.allBlogsVisible) {
+        blogDataLoad();
+      }
+    };
+
+    const observer = new IntersectionObserver(onIntersection);
+    if (observer && loaderRef.current) {
+      observer.observe(loaderRef.current);
+    }
+
+    // cleanup
+    return () => {
+      if (observer) observer.disconnect();
+    };
+  }, [state.infinityScrollBlogs.length, state.allBlogsVisible]);
+
+  let content = state.infinityScrollBlogs?.map((blog) => (
+    <ProfileBlogCard
+      key={blog?.id}
+      blog={blog}
+      setActionPopUp={setActionPopUp}
+      actionPopUp={actionPopUp}
+    />
+  ));
+
   return (
     <>
       <h4 className="mt-6 text-xl lg:mt-8 lg:text-2xl">Your Blogs</h4>
       <div className="my-6 space-y-4">
-        {/* <!-- Blog Card Start --> */}
-        <div className="blog-card">
-          <img className="blog-thumb" src={BlogThumbnail} alt="" />
-          <div className="mt-2">
-            <h3 className="text-slate-300 text-xl lg:text-2xl">React Fetch API</h3>
-            <p className="mb-6 text-base text-slate-500 mt-1">
-              Aenean eleifend ante maecenas pulvinar montes lorem et pede dis dolor pretium donec
-              dictum. Vici consequat justo enim. Venenatis eget adipiscing luctus lorem.
-            </p>
-
-            {/* <!-- Meta Informations --> */}
-            <div className="flex justify-between items-center">
-              <div className="flex items-center capitalize space-x-2">
-                <div className="avater-img bg-indigo-600 text-white">
-                  <span className="">S</span>
-                </div>
-
-                <div>
-                  <h5 className="text-slate-500 text-sm">Saad Hasan</h5>
-                  <div className="flex items-center text-xs text-slate-700">
-                    <span>June 28, 2018</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="text-sm px-2 py-1 text-slate-700">
-                <span>100 Likes</span>
-              </div>
-            </div>
+        {content}
+        {!state.allBlogsVisible ? (
+          <div ref={loaderRef} className="text-center text-base text-slate-500 mt-1">
+            Loading blogs...
           </div>
-        </div>
-        {/* <!-- Blog Card End --> */}
-
-        {/* <!-- Blog Card Start --> */}
-        <div className="blog-card">
-          <img className="blog-thumb" src={BlogThumbnail} alt="" />
-          <div className="mt-2">
-            <h3 className="text-slate-300 text-xl lg:text-2xl">React Fetch API</h3>
-            <p className="mb-6 text-base text-slate-500 mt-1">
-              Aenean eleifend ante maecenas pulvinar montes lorem et pede dis dolor pretium donec
-              dictum. Vici consequat justo enim. Venenatis eget adipiscing luctus lorem.
-            </p>
-
-            {/* <!-- Meta Informations --> */}
-            <div className="flex justify-between items-center">
-              <div className="flex items-center capitalize space-x-2">
-                <div className="avater-img bg-indigo-600 text-white">
-                  <span className="">S</span>
-                </div>
-
-                <div>
-                  <h5 className="text-slate-500 text-sm">Saad Hasan</h5>
-                  <div className="flex items-center text-xs text-slate-700">
-                    <span>June 28, 2018</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="text-sm px-2 py-1 text-slate-700">
-                <span>100 Likes</span>
-              </div>
-            </div>
+        ) : (
+          <div className="text-center text-base text-slate-500 mt-1">
+            {state.infinityScrollBlogs.length > 0 ? "No More blogs all blogs visible" : "No Blogs"}
           </div>
-        </div>
-        {/* <!-- Blog Card End --> */}
-
-        {/* <!-- Blog Card Start --> */}
-        <div className="blog-card">
-          <img className="blog-thumb" src={BlogThumbnail} alt="" />
-          <div className="mt-2">
-            <h3 className="text-slate-300 text-xl lg:text-2xl">React Fetch API</h3>
-            <p className="mb-6 text-base text-slate-500 mt-1">
-              Aenean eleifend ante maecenas pulvinar montes lorem et pede dis dolor pretium donec
-              dictum. Vici consequat justo enim. Venenatis eget adipiscing luctus lorem.
-            </p>
-
-            {/* <!-- Meta Informations --> */}
-            <div className="flex justify-between items-center">
-              <div className="flex items-center capitalize space-x-2">
-                <div className="avater-img bg-indigo-600 text-white">
-                  <span className="">S</span>
-                </div>
-
-                <div>
-                  <h5 className="text-slate-500 text-sm">Saad Hasan</h5>
-                  <div className="flex items-center text-xs text-slate-700">
-                    <span>June 28, 2018</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="text-sm px-2 py-1 text-slate-700">
-                <span>100 Likes</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* <!-- Blog Card End --> */}
+        )}
       </div>
     </>
   );
