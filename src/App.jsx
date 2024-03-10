@@ -4,7 +4,7 @@ import CreateBlog from "./components/Pages/CreateBlog/CreateBlog";
 import Home from "./components/Pages/Home/Home";
 import Login from "./components/Pages/Login/Login";
 import Main from "./components/Pages/Main/Main";
-import Profile from "./components/Pages/Profile/Profile";
+import ProfileMaincontent from "./components/Pages/Profile/ProfileMainContent";
 import Registration from "./components/Pages/Registration/Registration";
 import SingleBlogMainContent from "./components/Pages/SingleBlog/SingleBlogMainContent";
 import useAuthCheck from "./hooks/useAuthCheck";
@@ -20,7 +20,7 @@ function App() {
           <Route>
             <Route path="/" element={<Main />}>
               <Route path="/" element={<Home />} />
-              <Route path="/profile/:authorId" element={<Profile />} />
+              <Route path="/profile/:authorId" element={<ProfileMaincontent />} />
               <Route
                 path="/create-blog"
                 element={

@@ -5,6 +5,7 @@ const BlogsContext = createContext();
 const FavouriteBlogsContext = createContext();
 const PopularBlogsContext = createContext();
 const SingleBlogContext = createContext();
+const ProfileContext = createContext();
 
-export { AuthContext, BlogsContext, FavouriteBlogsContext, PopularBlogsContext, SingleBlogContext };
+export { AuthContext, BlogsContext, FavouriteBlogsContext, PopularBlogsContext, ProfileContext, SingleBlogContext };
 
