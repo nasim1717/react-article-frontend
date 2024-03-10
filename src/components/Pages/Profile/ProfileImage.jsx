@@ -10,7 +10,7 @@ export default function ProfileImage() {
   const { state, dispatch } = useProfile();
   const fileUploaderRef = useRef();
   const { api } = useAxios();
-  const { setAuth } = useAuth();
+  const { setAuth, auth } = useAuth();
 
   const handleImageUpload = (event) => {
     event.preventDefault();
@@ -68,12 +68,14 @@ export default function ProfileImage() {
       </div>
 
       <input id="file" type="file" accept="image/*" ref={fileUploaderRef} hidden />
-      <button
-        className="grid place-items-center absolute bottom-0 right-0 h-7 w-7 rounded-full bg-slate-700 hover:bg-slate-700/80"
-        onClick={handleImageUpload}
-      >
-        <img src={EditIcon} alt="Edit" />
-      </button>
+      {auth?.user?.id === state?.profileData?.id && (
+        <button
+          className="grid place-items-center absolute bottom-0 right-0 h-7 w-7 rounded-full bg-slate-700 hover:bg-slate-700/80"
+          onClick={handleImageUpload}
+        >
+          <img src={EditIcon} alt="Edit" />
+        </button>
+      )}
     </div>
   );
 }
