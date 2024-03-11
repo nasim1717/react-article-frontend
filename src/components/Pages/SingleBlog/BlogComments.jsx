@@ -60,7 +60,9 @@ export default function BlogComments() {
           <span className="capitalize">{comment?.author?.firstName?.charAt(0)}</span>
         )}
       </div>
+
       <div className="w-full">
+        {" "}
         <h5 className="text-slate -500 font-bold">
           {comment?.author?.firstName + " " + comment?.author?.lastName}
         </h5>
