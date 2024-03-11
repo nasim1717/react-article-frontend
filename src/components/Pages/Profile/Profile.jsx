@@ -35,10 +35,14 @@ export default function Profile() {
 
   let content = null;
   if (state.loading && !state.error) {
-    content = <div>Loading...</div>;
+    content = <div className="text-slate-400 font-medium text-center">Loading...</div>;
   }
   if (!state.loading && state.error) {
-    content = <div>Something went wrong, please log in and try again</div>;
+    content = (
+      <div className="text-slate-400 font-medium text-center">
+        Something went wrong, please log in and try again
+      </div>
+    );
   }
   if (!state.loading && !state.error) {
     content = (

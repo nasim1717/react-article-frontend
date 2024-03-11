@@ -30,14 +30,14 @@ export default function LoginForm() {
         setAuth(authData);
         toast.success("Successfully login", {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 3000,
         });
         navigate("/");
       }
     } catch (error) {
       toast.error(`${error?.response?.data?.error} please try again!`, {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 3000,
       });
     } finally {
       setLoading(false);

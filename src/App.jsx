@@ -12,7 +12,9 @@ import useAuthCheck from "./hooks/useAuthCheck";
 function App() {
   const authCheck = useAuthCheck();
   if (!authCheck) {
-    return <div>Loading....</div>;
+    return (
+      <div className="text-slate-400 font-medium text-center my-auto text-xl">Loading....</div>
+    );
   } else {
     return (
       <>

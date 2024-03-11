@@ -29,10 +29,10 @@ export default function SingleBlogContent() {
 
   let content = null;
   if (loading && !error) {
-    content = <div>Loading...</div>;
+    content = <div className="text-slate-400 font-medium text-center">Loading...</div>;
   }
   if (!error && !loading && Object.keys(singleBlog).length === 0) {
-    content = <div className="text-slate-400 font-medium">No blog</div>;
+    content = <div className="text-slate-400 font-medium text-center">No blog</div>;
   }
   if (!error && !loading && Object.keys(singleBlog).length > 0) {
     content = (
@@ -45,7 +45,7 @@ export default function SingleBlogContent() {
     );
   }
   if (error && !loading) {
-    content = <div className="text-slate-400 font-medium">Blog not found</div>;
+    content = <div className="text-slate-400 font-medium text-center">Blog not found</div>;
   }
 
   return <main>{content}</main>;

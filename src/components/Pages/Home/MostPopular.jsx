@@ -30,10 +30,10 @@ export default function MostPopular() {
 
   let content = null;
   if (loading && !error) {
-    content = <div>Loading...</div>;
+    content = <div className="text-slate-400 font-medium text-center">Loading...</div>;
   }
   if (!error && !loading && popularBlogs?.length === 0) {
-    content = <div className="text-slate-400 font-medium">No popular blogs</div>;
+    content = <div className="text-slate-400 font-medium text-center">No popular blogs</div>;
   }
   if (!error && !loading && popularBlogs?.length > 0) {
     content = popularBlogs.map((data) => (
@@ -62,7 +62,7 @@ export default function MostPopular() {
     ));
   }
   if (error && !loading) {
-    content = <div className="text-slate-400 font-medium">An error has occurred</div>;
+    content = <div className="text-slate-400 font-medium text-center">An error has occurred</div>;
   }
 
   return (

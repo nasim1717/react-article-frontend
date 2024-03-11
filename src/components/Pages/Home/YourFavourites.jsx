@@ -33,10 +33,10 @@ export default function YourFavourites() {
 
   let content = null;
   if (loading && !error) {
-    content = <div>Loading...</div>;
+    content = <div className="text-slate-400 font-medium text-center">Loading...</div>;
   }
   if (!error && !loading && favouriteBlogs?.length === 0) {
-    content = <div className="text-slate-400 font-medium">Your no favourite blogs</div>;
+    content = <div className="text-slate-400 font-medium text-center">Your no favourite blogs</div>;
   }
   if (!error && !loading && favouriteBlogs?.length > 0) {
     content = favouriteBlogs.map((data) => (
@@ -53,7 +53,7 @@ export default function YourFavourites() {
     ));
   }
   if (error && !loading) {
-    content = <div className="text-slate-400 font-medium">Your no favourite blogs</div>;
+    content = <div className="text-slate-400 font-medium text-center">Your no favourite blogs</div>;
   }
 
   return (

@@ -16,7 +16,7 @@ export default function BlogMetaInfo({ blog }) {
                 alt="avatar"
               />
             ) : (
-              <span className="capitalize">{blog?.author?.firstName.charAt(0)}</span>
+              <span className="capitalize">{blog?.author?.firstName?.charAt(0)}</span>
             )}
           </div>
 

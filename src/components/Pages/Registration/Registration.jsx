@@ -40,7 +40,7 @@ export default function Registration() {
     } catch (error) {
       toast.error(`${error?.response?.data?.message} please try again!`, {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 2000,
       });
     } finally {
       setLoading(false);

@@ -66,16 +66,27 @@ export default function BlogContents() {
   } else if (!error && blogs.length === 0 && !blogsFound && !allVisibale) {
     loadingShow = "Blogs Not Found!";
   } else if (!error && blogs.length > 0 && blogsFound && allVisibale) {
-    loadingShow = "No more blogs all blogs visible";
+    loadingShow = (
+      <div className="border border-blue-900/50 py-1 px-1 rounded w-40">
+        No More blogs all blogs visible
+      </div>
+    );
   }
 
   return (
     <div className="space-y-3 md:col-span-5">
       {content}
-      <div ref={loaderRef} className={`${allVisibale && "hidden"}`}>
+      <div
+        ref={loaderRef}
+        className={`${allVisibale && "hidden"} text-slate-400 font-medium text-center`}
+      >
         {loadingShow}
       </div>
-      {allVisibale && <div>{loadingShow}</div>}
+      {allVisibale && (
+        <div className="text-slate-400 font-medium text-center flex justify-center">
+          {loadingShow}
+        </div>
+      )}
     </div>
   );
 }
