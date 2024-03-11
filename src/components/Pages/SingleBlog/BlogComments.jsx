@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { actions } from "../../../actions";
 import { useAuth } from "../../../hooks/useAuth";
@@ -48,23 +49,28 @@ export default function BlogComments() {
   const blogComments = singleBlog?.comments?.map((comment) => (
     <div key={comment?.id} className="flex items-start space-x-4 my-8 relative">
       <div className="avater-img bg-indigo-600 text-white">
-        {comment?.author?.avatar ? (
-          <img
-            className="rounded-full"
-            src={`${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${
-              comment?.author?.avatar
-            }`}
-            alt="avatar"
-          />
-        ) : (
-          <span className="capitalize">{comment?.author?.firstName?.charAt(0)}</span>
-        )}
+        <Link to={`/profile/${comment?.author?.id}`}>
+          {" "}
+          {comment?.author?.avatar ? (
+            <img
+              className="rounded-full"
+              src={`${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${
+                comment?.author?.avatar
+              }`}
+              alt="avatar"
+            />
+          ) : (
+            <span className="capitalize">{comment?.author?.firstName?.charAt(0)}</span>
+          )}
+        </Link>
       </div>
 
       <div className="w-full">
         {" "}
         <h5 className="text-slate -500 font-bold">
-          {comment?.author?.firstName + " " + comment?.author?.lastName}
+          <Link to={`/profile/${comment?.author?.id}`}>
+            {comment?.author?.firstName + " " + comment?.author?.lastName}
+          </Link>
         </h5>
         <p className="text-slate-300">{comment?.content}</p>
       </div>
