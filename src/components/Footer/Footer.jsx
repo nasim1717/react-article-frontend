@@ -1,13 +1,14 @@
 /* eslint-disable react/no-unknown-property */
+import { Link } from "react-router-dom";
 import LwsLogo from "../../assets/logo.svg";
 
 export default function Footer() {
   return (
     <footer className="my-6 md:my-8 bg-[#030317]">
       <div className="container mx-auto flex items-center justify-between">
-        <a href="/">
+        <Link to={"/"}>
           <img className="w-28" src={LwsLogo} alt="lws" />
-        </a>
+        </Link>
         <ul className="flex items-center space-x-5">
           <li className="text-center">
             <a className="text-white/50 hover:text-white transition-all duration-200" href="#">

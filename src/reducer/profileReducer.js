@@ -2,7 +2,6 @@ import { actions } from "../actions";
 
 export const initialProfileState = {
     profileData: {},
-    blogs: [],
     infinityScrollBlogs: [],
     loading: false,
     error: false,

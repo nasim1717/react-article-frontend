@@ -11,7 +11,7 @@ export default function BlogContents() {
 
   // blog data fetching infinity scroll
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchBlogs = async () => {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_SERVER_BASE_URL}/blogs?page=${page}`
@@ -32,7 +32,7 @@ export default function BlogContents() {
     const onIntersection = (items) => {
       const loaderItem = items[0];
       if (loaderItem.isIntersecting && !allVisibale) {
-        fetchProducts();
+        fetchBlogs();
       }
     };
 
