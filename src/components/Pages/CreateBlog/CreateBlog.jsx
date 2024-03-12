@@ -53,6 +53,7 @@ export default function CreateBlog() {
     fileUploaderRef.current.click();
   };
 
+  // update Image display and image local url create functin
   const updateImageDisplay = async () => {
     const thumbnail = fileUploaderRef.current.files[0];
     const thubnailLocalUrl = URL.createObjectURL(thumbnail);
@@ -61,13 +62,19 @@ export default function CreateBlog() {
     setImgLocalUrl(thubnailLocalUrl);
   };
 
+  // input tags string converted array
+  const tagsArrayCreate = (tagsData) => {
+    const tagsArray = tagsData.split(",").map((tag) => tag.trim());
+    return tagsArray;
+  };
+
   // handle create blog function
   const handleNewBlogCreate = async (data) => {
     setLoading(true);
     const formData = new FormData();
     if (blogThumbnail) {
       formData.append("title", data.title);
-      formData.append("tags", data.tags.split(","));
+      formData.append("tags", tagsArrayCreate(data.tags));
       formData.append("content", data.content);
       formData.append("thumbnail", blogThumbnail);
       try {
