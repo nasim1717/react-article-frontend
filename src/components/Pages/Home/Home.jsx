@@ -1,3 +1,4 @@
+import useTitle from "../../../hooks/useTitle";
 import BlogsProvider from "../../../provider/BlogsProvider";
 import FavouriteBlogsProvider from "../../../provider/FavouriteBlogsProvider";
 import PopularBlogsProvider from "../../../provider/PopularBlogsProvider";
@@ -6,6 +7,8 @@ import MostPopular from "./MostPopular";
 import YourFavourites from "./YourFavourites";
 
 export default function Home() {
+  useTitle("React Blogify | Learn with Sumit");
+
   return (
     <>
       <BlogsProvider>

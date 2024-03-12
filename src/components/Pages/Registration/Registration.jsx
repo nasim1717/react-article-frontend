@@ -4,8 +4,10 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../../../hooks/useAuth";
+import useTitle from "../../../hooks/useTitle";
 
 export default function Registration() {
+  useTitle("Register | Learn with Sumit");
   const [loading, setLoading] = useState(false);
   const { setAuth } = useAuth();
   const navigate = useNavigate();

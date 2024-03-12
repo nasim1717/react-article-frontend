@@ -1,6 +1,8 @@
+import useTitle from "../../../hooks/useTitle";
 import LoginForm from "./LoginForm";
 
 export default function Login() {
+  useTitle("Login | Learn with Sumit");
   return (
     <main>
       <section className="container">

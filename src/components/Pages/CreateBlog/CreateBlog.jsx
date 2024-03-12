@@ -5,9 +5,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../../../hooks/useAuth";
 import { useAxios } from "../../../hooks/useAxios";
+import useTitle from "../../../hooks/useTitle";
 
 export default function CreateBlog() {
   const { blogId } = useParams();
+  useTitle(`${blogId ? "Update Blog" : "Create Blog"} | Learn with Sumit`);
   const fileUploaderRef = useRef();
   const { setAuth } = useAuth();
   const [imgLocalUrl, setImgLocalUrl] = useState(null);

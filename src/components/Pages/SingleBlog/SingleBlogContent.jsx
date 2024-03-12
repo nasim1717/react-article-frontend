@@ -3,11 +3,13 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { actions } from "../../../actions";
 import { useSingleBlog } from "../../../hooks/useSingleBlog";
+import useTitle from "../../../hooks/useTitle";
 import BlogComments from "./BlogComments";
 import Floating from "./Floating";
 import SingleBlog from "./SingleBlog";
 
 export default function SingleBlogContent() {
+  useTitle("Single-Blog | Learn with Sumit");
   const { blogId } = useParams();
   const { dispatch, error, loading, singleBlog } = useSingleBlog();
 
