@@ -15,7 +15,7 @@ export default function Header() {
         <div>
           <ul className="flex items-center space-x-5">
             <HeaderWrite />
-            <HeaderSearch />
+            {auth?.user && <HeaderSearch />}
             <HeaderLogin />
             {auth?.user && <HeaderProfile />}
           </ul>

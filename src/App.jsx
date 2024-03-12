@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import NotFound from "./components/NotFound/NotFound";
 import CreateBlog from "./components/Pages/CreateBlog/CreateBlog";
 import Home from "./components/Pages/Home/Home";
 import Login from "./components/Pages/Login/Login";
@@ -44,6 +45,7 @@ function App() {
               <Route path="/register" element={<Registration />} />
             </Route>
           </Route>
+          <Route element={<NotFound />} path="*" />
         </Routes>
       </>
     );
