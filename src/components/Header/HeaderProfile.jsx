@@ -16,14 +16,14 @@ export default function HeaderProfile() {
               alt="avatar"
             />
           ) : (
-            <span className="capitalize">{auth?.user?.firstName?.charAt(0)}</span>
+            <span className="capitalize ">{auth?.user?.firstName?.charAt(0)}</span>
           )}
         </div>
       </Link>
 
       {/* <!-- Logged-in user's name --> */}
       <Link to={`/profile/${auth?.user?.id}`}>
-        <span className="text-white ml-2">
+        <span className="ml-2 text-slate-500">
           {auth?.user?.firstName + " " + auth?.user?.lastName}
         </span>
       </Link>

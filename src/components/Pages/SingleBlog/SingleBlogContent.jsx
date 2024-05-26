@@ -9,7 +9,7 @@ import Floating from "./Floating";
 import SingleBlog from "./SingleBlog";
 
 export default function SingleBlogContent() {
-  useTitle("Single-Blog | Learn with Sumit");
+  useTitle("Single-Blog | Article");
   const { blogId } = useParams();
   const { dispatch, error, loading, singleBlog } = useSingleBlog();
 

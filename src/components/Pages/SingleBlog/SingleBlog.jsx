@@ -8,7 +8,7 @@ export default function SingleBlog() {
   return (
     <section>
       <div className="container text-center py-8">
-        <h1 className="font-bold text-3xl md:text-5xl">{singleBlog?.title}</h1>
+        <h1 className="font-bold text-3xl md:text-5xl text-slate-600">{singleBlog?.title}</h1>
         <div className="flex justify-center items-center my-4 gap-4">
           <Link to={`/profile/${singleBlog?.author?.id}`}>
             <div className="flex items-center capitalize space-x-2">
@@ -31,10 +31,10 @@ export default function SingleBlog() {
             </div>
           </Link>
 
-          <span className="text-sm text-slate-700 dot">
+          <span className="text-sm text-slate-500 dot">
             {getFormateDate(singleBlog?.createdAt)}
           </span>
-          <span className="text-sm text-slate-700 dot">{singleBlog?.likes?.length} Likes</span>
+          <span className="text-sm text-slate-500 dot">{singleBlog?.likes?.length} Likes</span>
         </div>
         <img
           className="mx-auto w-full md:w-8/12 object-cover h-80 md:h-96"
@@ -48,7 +48,7 @@ export default function SingleBlog() {
           ))}
         </ul>
 
-        <div className="mx-auto w-full md:w-10/12 text-slate-300 text-base md:text-lg leading-8 py-2 !text-left">
+        <div className="mx-auto w-full md:w-10/12 text-slate-500 text-base md:text-lg leading-8 py-2 !text-left">
           {singleBlog?.content}
         </div>
       </div>

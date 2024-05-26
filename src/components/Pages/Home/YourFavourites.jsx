@@ -33,19 +33,19 @@ export default function YourFavourites() {
 
   let content = null;
   if (loading && !error) {
-    content = <div className="text-slate-400 font-medium text-center">Loading...</div>;
+    content = <div className="text-slate-500 font-medium text-center">Loading...</div>;
   }
   if (!error && !loading && favouriteBlogs?.length === 0) {
-    content = <div className="text-slate-400 font-medium text-center">Your no favourite blogs</div>;
+    content = <div className="text-slate-500 font-medium text-center">Your no favourite blogs</div>;
   }
   if (!error && !loading && favouriteBlogs?.length > 0) {
     content = favouriteBlogs.map((data) => (
       <li key={data?.id}>
         <Link to={`/blog/${data?.id}`}>
-          <h3 className="text-slate-400 font-medium hover:text-slate-300 transition-all cursor-pointer">
+          <h3 className="text-slate-600 font-medium hover:text-slate-300 transition-all cursor-pointer">
             {data?.title}
           </h3>
-          <p className="text-slate-600 text-sm">
+          <p className="text-slate-500 text-sm">
             {data?.tags.split(",").map((value) => `#${value} `)}
           </p>
         </Link>
@@ -53,12 +53,14 @@ export default function YourFavourites() {
     ));
   }
   if (error && !loading) {
-    content = <div className="text-slate-400 font-medium text-center">Your no favourite blogs</div>;
+    content = <div className="text-slate-500 font-medium text-center">Your no favourite blogs</div>;
   }
 
   return (
     <div className="sidebar-card">
-      <h3 className="text-slate-300 text-xl lg:text-2xl font-semibold">Your Favourites ❤️</h3>
+      <h3 className="text-slate-600 text-center text-xl lg:text-2xl font-semibold">
+        Your Favourites{" "}
+      </h3>
       <ul className="space-y-5 my-5">{content}</ul>
     </div>
   );

@@ -9,7 +9,7 @@ import useTitle from "../../../hooks/useTitle";
 
 export default function CreateBlog() {
   const { blogId } = useParams();
-  useTitle(`${blogId ? "Update Blog" : "Create Blog"} | Learn with Sumit`);
+  useTitle(`${blogId ? "Update Blog" : "Create Blog"} | Article`);
   const fileUploaderRef = useRef();
   const { setAuth } = useAuth();
   const [imgLocalUrl, setImgLocalUrl] = useState(null);
@@ -144,7 +144,7 @@ export default function CreateBlog() {
             {!imgLocalUrl && (
               <div
                 onClick={handleImageUpload}
-                className="grid place-items-center bg-slate-600/20 h-[150px] rounded-md my-4"
+                className="grid place-items-center bg-slate-500 h-[150px] rounded-md my-4"
               >
                 <div className="flex items-center gap-4 hover:scale-110 transition-all cursor-pointer">
                   <svg
@@ -180,7 +180,7 @@ export default function CreateBlog() {
                 <div className="flex flex-row-reverse">
                   <div
                     onClick={handleImageUpload}
-                    className="flex items-center gap-4 cursor-pointer p-3 "
+                    className="flex items-center gap-4 cursor-pointer p-3 text-slate-500 font-bold"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -246,7 +246,7 @@ export default function CreateBlog() {
               <button
                 disabled={loading}
                 type="submit"
-                className="bg-indigo-600 text-white px-6 pt-4 pb-4 md:py-3 rounded-md hover:bg-indigo-700 transition-all duration-200"
+                className="bg-orange-600 text-white px-6 pt-4 pb-4 md:py-3 rounded-md hover:bg-orange-700 transition-all duration-200"
               >
                 {loading ? "Loading..." : "Create Blog"}
               </button>

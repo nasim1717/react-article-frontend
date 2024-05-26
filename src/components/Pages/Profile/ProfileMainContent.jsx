@@ -3,7 +3,7 @@ import ProfileProvider from "../../../provider/ProfileProvider";
 import Profile from "./Profile";
 
 export default function ProfileMaincontent() {
-  useTitle("Profile | Learn with Sumit");
+  useTitle("Profile | Article");
 
   return (
     <ProfileProvider>

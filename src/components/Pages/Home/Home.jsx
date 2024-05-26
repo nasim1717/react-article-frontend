@@ -7,7 +7,7 @@ import MostPopular from "./MostPopular";
 import YourFavourites from "./YourFavourites";
 
 export default function Home() {
-  useTitle("React Blogify | Learn with Sumit");
+  useTitle("Article");
 
   return (
     <>

@@ -75,7 +75,7 @@ export default function BlogContents() {
 
   return (
     <div className="space-y-3 md:col-span-5">
-      {content}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2"> {content}</div>
       <div
         ref={loaderRef}
         className={`${allVisibale && "hidden"} text-slate-400 font-medium text-center`}

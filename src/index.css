@@ -24,7 +24,7 @@
 
   /* Navbar */
   header {
-    @apply text-white border-b border-slate-800 mb-4;
+    @apply text-white  mb-4 shadow-xl;
   }
 
   nav {
@@ -40,7 +40,7 @@
 
   /* Blogs */
   .blog-card {
-    @apply flex gap-4 flex-col md:flex-row  bg-[#030317] p-3 border border-slate-800/40 rounded-lg transition-all hover:border-blue-900/50 hover:shadow-lg shadow-slate-200/50 cursor-pointer;
+    @apply flex gap-4 flex-col justify-center items-center  bg-[#F1FAEE] p-3 border border-slate-600/55 rounded-lg transition-all hover:border-slate-900/50 shadow-lg hover:shadow-2xl cursor-pointer;
   }
 
   .blog-card > div {
@@ -48,12 +48,12 @@
   }
 
   .blog-thumb {
-    @apply aspect-video object-cover rounded-md max-h-48;
+    @apply object-cover rounded-md w-[700px] h-[350px];
   }
 
   /* Sidebar */
   .sidebar-card {
-    @apply border border-slate-800/40 p-4 rounded-lg  hover:border-slate-800/90;
+    @apply border border-slate-600/55 p-4 rounded-lg  hover:border-slate-900/50 shadow-xl;
   }
 
   .dot {
@@ -96,14 +96,14 @@
   }
 
   .createBlog input {
-    @apply w-full focus:ring-0 shadow-none border-none outline-none placeholder:text-3xl text-3xl pl-0 font-bold bg-transparent appearance-none focus:border-none focus:outline-none;
+    @apply w-full text-white bg-slate-500 rounded-sm py-2 focus:ring-0 shadow-none border-none outline-none placeholder:text-3xl text-3xl px-1 font-bold  appearance-none focus:border-none focus:outline-none;
   }
 
   .createBlog textarea {
-    @apply w-full focus:ring-0 border-none outline-none placeholder:text-lg text-lg pl-0  bg-transparent appearance-none focus:border-none focus:outline-none;
+    @apply w-full bg-slate-500 focus:ring-0 border-none outline-none placeholder:text-lg text-lg pt-1 rounded-sm px-1 appearance-none focus:border-none focus:outline-none;
   }
   .createBlog #tags {
-    @apply font-normal text-base placeholder:text-base text-slate-500 w-full placeholder:italic;
+    @apply font-normal px-1 text-base placeholder:text-base text-white w-full placeholder:italic;
   }
 
   /* Action Modal */

@@ -17,7 +17,7 @@ export default function BlogCard({ blog, setActionPopUp, actionPopUp }) {
       </Link>
       <div className="mt-2 relative">
         <Link to={`/blog/${blog?.id}`}>
-          <h3 className="text-slate-300 text-xl lg:text-2xl">{blog?.title}</h3>
+          <h3 className="text-slate-600 text-xl lg:text-2xl">{blog?.title}</h3>
           <p className="mb-6 text-base text-slate-500 mt-1">{blog?.content}</p>
           <BlogMetaInfo blog={blog} />
         </Link>

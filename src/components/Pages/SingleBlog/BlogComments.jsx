@@ -67,12 +67,12 @@ export default function BlogComments() {
 
       <div className="w-full">
         {" "}
-        <h5 className="text-slate -500 font-bold">
+        <h5 className="text-slate-600 font-bold">
           <Link to={`/profile/${comment?.author?.id}`}>
             {comment?.author?.firstName + " " + comment?.author?.lastName}
           </Link>
         </h5>
-        <p className="text-slate-300">{comment?.content}</p>
+        <p className="text-slate-500">{comment?.content}</p>
       </div>
       {comment?.author?.id === auth?.user?.id && (
         <CommentDelete
@@ -87,9 +87,11 @@ export default function BlogComments() {
   return (
     <section id="comments">
       <div className="mx-auto w-full md:w-10/12 container">
-        <h2 className="text-3xl font-bold my-8">Comments ({singleBlog?.comments?.length})</h2>
+        <h2 className="text-3xl font-bold my-8 text-slate-600">
+          Comments ({singleBlog?.comments?.length})
+        </h2>
         <div className="flex items -center space-x-4">
-          <div className="avater-img bg-indigo-600 text-white">
+          <div className="avater-img bg-orange-600 text-white">
             {auth?.user?.avatar ? (
               <img
                 className="rounded-full"
@@ -104,7 +106,7 @@ export default function BlogComments() {
           <div className="w-full">
             <textarea
               disabled={!auth?.user && true}
-              className={`w-full bg-[#030317] border text-slate-300 border-slate-500 p-4 rounded-md focus:outline-none`}
+              className={`w-full bg-slate-500 border text-white border-slate-500 p-4 rounded-md focus:outline-none placeholder:text-white`}
               placeholder="Write a comment"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
@@ -112,7 +114,7 @@ export default function BlogComments() {
             <div className="flex justify-end mt-4">
               <button
                 disabled={postComentLoading}
-                className="bg-indigo-600 text-white px-6 py-2 md:py-3 rounded-md hover:bg-indigo-700 transition-all duration-200"
+                className="bg-orange-600 text-white px-6 py-2 md:py-3 rounded-md hover:bg-orange-700 transition-all duration-200"
                 onClick={() => handleComment(singleBlog?.id)}
               >
                 {postComentLoading ? "Loading..." : "Comment"}

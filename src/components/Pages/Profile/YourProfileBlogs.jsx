@@ -42,7 +42,7 @@ export default function YourProfileBlogs() {
 
   return (
     <>
-      <h4 className="mt-6 text-xl lg:mt-8 lg:text-2xl">Your Blogs</h4>
+      <h4 className="mt-6 text-xl lg:mt-8 lg:text-2xl text-slate-600 font-semibold">Your Blogs</h4>
       <div className="my-6 space-y-4">
         {content}
         {!state.allBlogsVisible ? (

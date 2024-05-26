@@ -31,7 +31,7 @@ export default function Profile() {
       }
     };
     fetchProfileData();
-  }, []);
+  }, [authorId]);
 
   let content = null;
   if (state.loading && !state.error) {

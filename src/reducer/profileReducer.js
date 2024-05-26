@@ -38,7 +38,8 @@ export const profileReducer = (state, action) => {
             return {
                 ...state,
                 loading: true,
-                error: false
+                error: false,
+                infinityScrollBlogs: []
             }
         }
         case actions.profile.PROFILE_DATA_FETCHED: {

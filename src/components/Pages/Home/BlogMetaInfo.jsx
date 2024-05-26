@@ -24,14 +24,14 @@ export default function BlogMetaInfo({ blog }) {
             <h5 className="text-slate-500 text-sm">
               {blog?.author?.firstName + " " + blog?.author?.lastName}
             </h5>
-            <div className="flex items-center text-xs text-slate-700">
+            <div className="flex items-center text-xs text-slate-500">
               <span>{getFormateDate(blog?.createdAt)}</span>
             </div>
           </div>
         </div>
       </Link>
 
-      <div className="text-sm px-2 py-1 text-slate-700">
+      <div className="text-sm px-2 py-1 text-slate-500">
         <span>{blog?.likes?.length} Likes</span>
       </div>
     </div>

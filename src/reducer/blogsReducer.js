@@ -16,7 +16,7 @@ export const blogsReducer = (state, action) => {
                 blogs: [...state.blogs, ...action.payload.data],
                 page: state.page + 1,
                 error: "",
-                blogsFound: action.payload.data.length > 0 ? true : state.blogs.longth > 0 ? true : false
+                blogsFound: action.payload.data.length > 0 ? true : state.blogs.length > 0 ? true : false
             }
         }
         case actions.blogs.BLOGS_ALL_VISIBALE: {

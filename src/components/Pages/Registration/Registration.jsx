@@ -7,7 +7,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import useTitle from "../../../hooks/useTitle";
 
 export default function Registration() {
-  useTitle("Register | Learn with Sumit");
+  useTitle("Register | Article");
   const [loading, setLoading] = useState(false);
   const { setAuth } = useAuth();
   const navigate = useNavigate();
@@ -51,8 +51,8 @@ export default function Registration() {
 
   return (
     <main>
-      <section className="container">
-        <div className="w-full md:w-1/2 mx-auto bg-[#030317] p-8 rounded-md mt-12">
+      <section className="container mb-8">
+        <div className="w-full md:w-1/2 mx-auto bg-slate-400 p-8 rounded-md mt-12">
           <h2 className="text-2xl font-bold mb-6">Register</h2>
           <form onSubmit={handleSubmit(registerFormSubmit)} autoComplete="off">
             <div className="mb-6">
@@ -64,8 +64,8 @@ export default function Registration() {
                 type="text"
                 id="firstName"
                 name="firstName"
-                className={`w-full p-3 bg-[#030317] border  rounded-md focus:outline-none focus:border-indigo-500 ${
-                  errors?.firstName?.message ? "border-red-500" : "border-white/20"
+                className={`w-full p-3 bg-slate-400 border  rounded-md focus:outline-none focus:border-slate-600 ${
+                  errors?.firstName?.message ? "border-red-500" : "border-slate-500"
                 }`}
               />
               {errors?.firstName?.message && (
@@ -81,8 +81,8 @@ export default function Registration() {
                 type="text"
                 id="lastName"
                 name="lastName"
-                className={`w-full p-3 bg-[#030317] border rounded-md focus:outline-none focus:border-indigo-500 ${
-                  errors?.lastName?.message ? "border-red-500" : " border-white/20"
+                className={`w-full p-3 bg-slate-400 border rounded-md focus:outline-none focus:border-slate-600 ${
+                  errors?.lastName?.message ? "border-red-500" : " border-slate-500"
                 }`}
               />
               {errors?.lastName?.message && (
@@ -98,8 +98,8 @@ export default function Registration() {
                 type="email"
                 id="email"
                 name="email"
-                className={`w-full p-3 bg-[#030317] border rounded-md focus:outline-none focus:border-indigo-500 ${
-                  errors?.email?.message ? "border-red-500" : "border-white/20"
+                className={`w-full p-3 bg-slate-400 border rounded-md focus:outline-none focus:border-slate-600 ${
+                  errors?.email?.message ? "border-red-500" : "border-slate-500"
                 }`}
               />
               {errors?.email?.message && (
@@ -118,8 +118,8 @@ export default function Registration() {
                 type="password"
                 id="password"
                 name="password"
-                className={`w-full p-3 bg-[#030317] border  rounded-md focus:outline-none focus:border-indigo-500 ${
-                  errors?.password?.message ? "border-red-500" : "border-white/20"
+                className={`w-full p-3 bg-slate-400 border  rounded-md focus:outline-none focus:border-slate-600 ${
+                  errors?.password?.message ? "border-red-500" : "border-slate-500"
                 }`}
               />
               {errors?.password?.message && (
@@ -130,14 +130,14 @@ export default function Registration() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-indigo-600 text-white p-3 rounded-md hover:bg-indigo-700 transition-all duration-200"
+                className="w-full bg-slate-600 text-white p-3 rounded-md hover:bg-slate-700 transition-all duration-200"
               >
                 {loading ? "Loading..." : "Create Account"}
               </button>
             </div>
             <p className="text-center">
               Already have account?
-              <Link to={"/login"} className="text-indigo-600 hover:underline">
+              <Link to={"/login"} className="text-orange-700 hover:underline">
                 Login
               </Link>
             </p>

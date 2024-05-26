@@ -30,19 +30,19 @@ export default function MostPopular() {
 
   let content = null;
   if (loading && !error) {
-    content = <div className="text-slate-400 font-medium text-center">Loading...</div>;
+    content = <div className="text-slate-600 font-medium text-center">Loading...</div>;
   }
   if (!error && !loading && popularBlogs?.length === 0) {
-    content = <div className="text-slate-400 font-medium text-center">No popular blogs</div>;
+    content = <div className="text-slate-600 font-medium text-center">No popular blogs</div>;
   }
   if (!error && !loading && popularBlogs?.length > 0) {
     content = popularBlogs.map((data) => (
       <li key={data?.id}>
         <Link to={`/blog/${data?.id}`}>
-          <h3 className="text-slate-400 font-medium hover:text-slate-300 transition-all cursor-pointer">
+          <h3 className="text-slate-600 font-medium hover:text-slate-400 transition-all cursor-pointer">
             {data?.title}
           </h3>
-          <p className="text-slate-600 text-sm">
+          <p className="text-slate-500 text-sm">
             <Link to={`/profile/${data?.author?.id}`}>
               {" "}
               <span>
@@ -62,12 +62,14 @@ export default function MostPopular() {
     ));
   }
   if (error && !loading) {
-    content = <div className="text-slate-400 font-medium text-center">An error has occurred</div>;
+    content = <div className="text-slate-600 font-medium text-center">An error has occurred</div>;
   }
 
   return (
     <div className="sidebar-card">
-      <h3 className="text-slate-300 text-xl lg:text-2xl font-semibold">Most Popular 👍️</h3>
+      <h3 className="text-slate-600 text-center text-xl lg:text-2xl font-semibold">
+        Most Popular{" "}
+      </h3>
 
       <ul className="space-y-5 my-5">{content}</ul>
     </div>

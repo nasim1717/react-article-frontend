@@ -9,10 +9,10 @@ export default function ProfileInfo() {
     <div className="flex flex-col items-center py-8 text-center">
       <ProfileImage />
       <div>
-        <h3 className="text-2xl font-semibold text-white lg:text-[28px]">
+        <h3 className="text-2xl font-semibold  text-slate-600 lg:text-[28px]">
           {state.profileData?.firstName + " " + state.profileData?.lastName}
         </h3>
-        <p className="leading-[231%] lg:text-lg">{state?.profileData?.email}</p>
+        <p className="leading-[231%] lg:text-lg text-slate-500">{state?.profileData?.email}</p>
       </div>
       <ProfileBio />
       <div className="w-3/4 border-b border-[#3F3F3F] py-6 lg:py-8"></div>

@@ -37,10 +37,10 @@ export default function ProfileBio() {
     <div className="mt-4 flex items-start gap-2 lg:mt-6">
       <div className="flex-1">
         {!editMode ? (
-          <p className="leading-[188%] text-gray-400 lg:text-lg">{state.profileData?.bio}</p>
+          <p className="leading-[188%] text-gray-500 lg:text-lg">{state.profileData?.bio}</p>
         ) : (
           <textarea
-            className='p-2 className="leading-[188%] text-gray-600 lg:text-lg rounded-md'
+            className="p-2 bg-slate-400 text-white lg:text-lg rounded-md focus:border-none focus:outline-none"
             value={bio}
             rows={4}
             cols={55}
@@ -50,11 +50,14 @@ export default function ProfileBio() {
       </div>
 
       {!editMode && auth?.user?.id === state.profileData?.id ? (
-        <button onClick={() => setEditMode(true)} className="flex-center h-7 w-7 rounded-full">
+        <button
+          onClick={() => setEditMode(true)}
+          className="flex justify-center items-center h-7 w-7 rounded-full bg-slate-600"
+        >
           <img src={EditIcon} alt="Edit" />
         </button>
       ) : auth?.user?.id === state.profileData?.id ? (
-        <button onClick={handleEditBio} className="flex-center h-7 w-7 rounded-full">
+        <button onClick={handleEditBio} className="flex-center h-7 w-7 rounded-full bg-slate-600">
           <img src={CheckIcon} alt="Edit" />
         </button>
       ) : (
