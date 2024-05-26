@@ -26,6 +26,7 @@ export default function LoginForm() {
           token: response?.data?.token?.accessToken,
           refreshToken: response?.data?.token?.refreshToken,
         };
+        console.log("loginuser-->", authData);
         localStorage.setItem("auth", JSON.stringify(authData));
         setAuth(authData);
         toast.success("Successfully login", {
