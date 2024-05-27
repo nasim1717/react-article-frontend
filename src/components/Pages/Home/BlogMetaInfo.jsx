@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 import { getFormateDate } from "../../../utils/getFormateDate";
+import { useAuth } from "../../../hooks/useAuth";
 
 export default function BlogMetaInfo({ blog }) {
+  const { auth } = useAuth();
   return (
     <div className="flex justify-between items-center">
       <Link to={`/profile/${blog?.author?.id}`}>
         <div className="flex items-center capitalize space-x-2">
           <div className="avater-img bg-indigo-600 text-white ">
-            {blog?.author?.avatar ? (
+            {auth?.user?.avatar ? (
               <img
                 className="rounded-full"
-                src={`${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${
-                  blog?.author?.avatar
-                }`}
+                src={`${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${auth?.user?.avatar}`}
                 alt="avatar"
               />
             ) : (

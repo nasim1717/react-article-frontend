@@ -24,11 +24,11 @@ export default function ProfileBlogCard({ blog, setActionPopUp, actionPopUp }) {
           <div className="flex justify-between items-center">
             <div className="flex items-center capitalize space-x-2">
               <div className="avater-img bg-orange-600 text-white">
-                {blog?.author?.avatar ? (
+                {auth?.user?.avatar ? (
                   <img
                     className="rounded-full"
                     src={`${import.meta.env.VITE_SERVER_BASE_URL}/uploads/avatar/${
-                      blog?.author?.avatar
+                      auth?.user?.avatar
                     }`}
                     alt="avatar"
                   />
